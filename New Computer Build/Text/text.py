@@ -1,2 +1,1 @@
-print('nihao')
-print('nihao')
+print('你好')
