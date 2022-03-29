@@ -153,4 +153,46 @@ for (String url : urls) {
 }
 ```
 
+### 7、String方法的运用
+
+#### 7.1 String和int型数据类型的转换
+
+`String`转换为`int`
+
++ Integer.parseInt(str)
++ Integer.valueOf(str).intValue()
+
+`int`转换为`String`
+
++ String s = String.valueOf(i);
++ String s = Integer.toString(i);
++ String s = "" + i;
+
+#### 7.2 Java字符串大小写转换
+
+`String` 类的 `toLowerCase()`方法可以将字符串中的所有字符全部转换成小写，而非字母的字符不受影响。语法格式如下：
+
+```java
+字符串名.toLowerCase()    // 将字符串中的字母全部转换为小写，非字母不受影响
+```
+
+`toUpperCase()`则将字符串中的所有字符全部转换成大写，而非字母的字符不受影响。语法格式如下：
+
+```java
+字符串名.toUpperCase()    // 将字符串中的字母全部转换为大写，非字母不受影响
+```
+
+#### 7.3 Java提取子字符串
+
+在 String 中提供了两个截取字符串的方法，一个是从指定位置截取到字符串结尾`substring(int beginIndex)`，另一个是截取指定范围的内容`substring(int beginIndex，int endIndex)`。注意：`substring()`方法是按字符截取，而不是按字节截取。
+
+#### 7.4 Java分割字符串
+
+`String`类的`split()`方法可以按指定的分割符对目标字符串进行分割，分割后的内容存放在字符串数组中。该方法主要有如下两种重载形式：
+
+```java
+str.split(String sign)//sign 为指定的分割符，可以是任意字符串。
+str.split(String sign,int limit)//limit 表示分割后生成的字符串的限制个数，如果不指定，则表示不限制，直到将整个目标字符串完全分割为止。
+
+```
 

@@ -4,12 +4,14 @@ class Text{
 					
 	}
   public static void main(String[] args) {
-   int c = 12;
-   System.out.println(c);
-   System.out.println("c <<= 2 = " + c );
-   c >>= 2 ;
-   System.out.println("c >>= 2 = " + c );
-   c >>= 2 ;
+  String str = " str ";
+  String str1 = " str ";
+  int n,n1;
+  n = str.length();
+  n1 = str1.length();
+  System.out.println(n);
+  System.out.println(n1);
+
      System.out.println("hello World!");
   }
 }
