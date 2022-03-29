@@ -165,7 +165,7 @@ for (String url : urls) {
 `int`转换为`String`
 
 + String s = String.valueOf(i);
-+ String s = Integer.toString(i);
++ String s = Integer.toString(i);  
 + String s = "" + i;
 
 #### 7.2 Java字符串大小写转换
