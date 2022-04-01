@@ -126,7 +126,9 @@ for(初始化; 布尔表达式; 更新) {
     //代码语句
 }
 ```
+
 关于 for 循环有以下几点说明：
+
 + 最先执行初始化步骤。可以声明一种类型，但可初始化一个或多个循环控制变量，也可以是空语句。
 + 然后，检测布尔表达式的值。如果为 true，循环体被执行。如果为false，循环终止，开始执行循环体后面的语句。
 + 执行一次循环后，更新循环控制变量。
@@ -193,6 +195,27 @@ for (String url : urls) {
 ```java
 str.split(String sign)//sign 为指定的分割符，可以是任意字符串。
 str.split(String sign,int limit)//limit 表示分割后生成的字符串的限制个数，如果不指定，则表示不限制，直到将整个目标字符串完全分割为止。
-
 ```
+
+#### 7.5 字符串的替换
+
+`replace()`方法用于将目标字符串中的指定字符（串）替换成新的字符（串），其语法格式如下：
+
+```java
+字符串.replace(String oldChar, String newChar)//其中，oldChar 表示被替换的字符串；newChar 表示用于替换的字符串。
+//replace() 方法会将字符串中所有 oldChar 替换成 newChar。
+```
+
+`replaceFirst()`方法用于将目标字符串中匹配某正则表达式的第一个子字符串替换成新的字符串，其语法形式如下：
+
+```java
+字符串.replaceFirst(String regex, String replacement)//regex 表示正则表达式；replacement 表示用于替换的字符串。
+```
+
+`replaceAll()`方法用于将目标字符串中匹配某正则表达式的所有子字符串替换成新的字符串，其语法形式如下：
+
+```java
+字符串.replaceAll(String regex, String replacement)//其中，regex 表示正则表达式，replacement 表示用于替换的字符串。例如：
+```
+
 
