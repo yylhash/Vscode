@@ -215,7 +215,69 @@ str.split(String sign,int limit)//limit 表示分割后生成的字符串的限�
 `replaceAll()`方法用于将目标字符串中匹配某正则表达式的所有子字符串替换成新的字符串，其语法形式如下：
 
 ```java
-字符串.replaceAll(String regex, String replacement)//其中，regex 表示正则表达式，replacement 表示用于替换的字符串。例如：
+字符串.replaceAll(String regex, String replacement)//其中，regex 表示正则表达式，replacement 表示用于替换的字符串。
 ```
 
+### 8、字符串的比较
+
+字符串比较是常见的操作，包括比较相等、比较大小、比较前缀和后缀串等。在 Java 中，比较字符串的常用方法有 3 个：`equals()`方法、`equalsIgnoreCase()`方法、 `compareTo()`方法。
+
+**equals()** 方法将逐个地比较两个字符串的每个字符是否相同。如果两个字符串具有相同的字符和长度，它返回 true，否则返回 false。对于字符的大小写，也在检查的范围之内。
+
+```java
+str1.equals(str2);//str1 和 str2 可以是字符串变量， 也可以是字符串字面量。
+```
+
+**equalsIgnoreCase()** 方法的作用和语法与`equals()`方法完全相同，唯一不同的是 `equalsIgnoreCase()` 比较时不区分大小写。当比较两个字符串时，它会认为 A-Z 和 a-z 是一样的。
+
+**compareTo()** 方法用于按字典顺序比较两个字符串的大小，该比较是基于字符串各个字符的 Unicode 值
+
+```java
+str.compareTo(String otherstr);//如果按字典顺序 str 位于 otherster 参数之前，比较结果为一个负整数；
+//如果 str 位于 otherstr 之后，比较结果为一个正整数；如果两个字符串相等，则结果为 0。
+
+提示：如果两个字符串调用 equals() 方法返回 true，那么调用 compareTo() 方法会返回 0。
+```
+
+#### 8.1 equals() 与 == 的比较
+
+`equals()`方法比较字符串对象中的字符。而 **==** 运算符比较两个对象引用看它们是否引用相同的实例。
+
+下面的程序说明了两个不同的字符串（String）对象是如何能够包含相同字符的，但同时这些对象引用是不相等的：
+
+```java
+String s1 = "Hello";
+String s2 = new String(s1);
+System.out.println(s1.equals(s2)); // 输出true
+System.out.println(s1 == s2); // 输出false
+```
+
+变量 s1 指向由“Hello”创建的字符串实例。s2 所指的的对象是以 s1 作为初始化而创建的。因此这两个字符串对象的内容是一样的。但它们是不同的对象，这就意味着 s1 和 s2 没有指向同一的对象，因此它们是不==的。
+
+因此，千万不要使用==运算符测试字符串的相等性，以免在程序中出现糟糕的 bug。从表面上看，这种 bug 很像随机产生的间歇性错误。
+
+### 9、Java中容易混淆的空字符串和null
+
+null 是空引用，表示一个对象的值，没有分配内存，调用 null 的字符串的方法会抛出空指针异常。
+“”是一个长度为 0 且占内存的空字符串，在内存中分配一个空间，可以使用 Object 对象中的方法。例如：`“”.toString()`等
+new String() 创建一个字符串对象的默认值为 ""，String 类型成员变量的初始值为 null。
+
+```java
+public static void main(String[] args) {
+    String str1 = new String();
+    String str2 = null;
+    String str3 = "";
+    System.out.println(str3.length()); // 空字符串""的长度为0
+    System.out.println(str2.length()); // 抛出空指针异常
+    System.out.println(str1); // 输出""
+    System.out.println(str1 == str2); // 内存地址的比较，返回false
+    System.out.println(str1.equals(str2)); // 值的比较，返回false
+    System.out.println(str2 == str3); // 内存地址的比较，返回false
+    System.out.println(str3.equals(str2)); // 值的比较，返回false
+    System.out.println(str1 == str3); // 内存地址的比较，返回false
+    System.out.println(str1.equals(str3)); // 值的比较，返回true
+}
+```
+
+### 10、Java StringBuffer 和 StringBuilder 类
 
