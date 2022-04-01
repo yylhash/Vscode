@@ -1,4 +1,4 @@
-public class split {
+public class splitTwo {
     public static void main(String[] args) {
         String Colors = "Red,Black,White,Yellow,Blue";
         String[] arr1 = Colors.split(","); // 不限制元素个数
