@@ -281,3 +281,26 @@ public static void main(String[] args) {
 
 ### 10、Java StringBuffer 和 StringBuilder 类
 
+`String`、`StringBuffer`和`StringBuilder`的区别：
+| 类型 | 区别 |
+| :--: | :--: |
+| String | 字符串常量定长不可变
+| StringBuffer | 线程安全字符变常量
+| StringBuilder | 线程不安全字符变量，速度高于`StringBuffer`高于`String`
+
+#### 10.1 StringBuffer
+
+`StringBuffer` 类提供了 3 个构造方法来创建一个字符串，如下所示：
+
++ `StringBuffer()` 构造一个空的字符串缓冲区，并且初始化为 **16** 个字符的容量。
++ `StringBuffer(int length)` 创建一个空的字符串缓冲区，并且初始化为指定长度 length 的容量。
++ `StringBuffer(String str)` 创建一个字符串缓冲区，并将其内容初始化为指定的字符串内容 str，字符串缓冲区的初始容量为 **16** 加上字符串 <font color = "red"> str</font> 的长度。
+
+常用函数：
+
++ 追加字符串`StringBuffer 对象.append(String str);`
++ 替换字符`StringBuffer 对象.setCharAt(int index, char ch);`
++ 反转字符串`StringBuffer 对象.reverse();`
++ 删除字符串`StringBuffer 对象.deleteCharAt(int index);`或者`StringBuffer 对象.delete(int start,int end);`
++ 插入字符串`StringBuffer对象.insert(int offset,  String str)`
+
