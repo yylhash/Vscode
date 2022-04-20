@@ -323,3 +323,242 @@ dataType[] arrayRefVar;   // 首选的方法
 dataType arrayRefVar[];  // 效果相同，但不是首选方法
 ```
 
+#### 11.1 数组的相关操作
+
+Java数组和字符串的**相互转换**
+
++ 字符串转换为数组
+  + Java String 类中的 `toCharArray()` 方法将字符串转换为字符数组。
+  + Java.lang 包中有 `String.split()` 方法，Java 中通常用 `split()` 分割字符串。
+  + 如果要返回 byte 数组就直接使用 `getBytes()` 方法就可以了。
+
++ 数组转换为字符串
+  + char 字符数组转化为字符串，使用 `String.copyValueOf(charArray)` 函数实现。
+  + String 字符串数组转化为字符串,使用`append()`方法。String并不拥有append方法，所以借助 StringBuffer，在使用`toString()`方法。
+
+Java比较两个数组**是否相等**
+
+数组相等的条件不仅要求数组元素的个数必须相等，而且要求对应位置的元素也相等。Arrays 类提供了 `equals()` 方法比较整个数组。语法如下：
+
+```java
+Arrays.equals(arrayA, arrayB);
+```
+
+Java**数组填充**
+
++ Arrays 类提供了一个 `fill()`方法，可以在指定位置进行数值填充。fill() 方法虽然可以填充数组，但是它的功能有限制，只能使用同一个数值进行填充。语法如下：
+
+  + ```java
+     Arrays.fill(array,value);
+     ```
+
+    其中，array 表示数组，value 表示填充的值。
+
+  + ```java
+    public static void fill(int[] a, int fromIndex,int toIndex, int val)：//将指定的 int 值分配给指定 int 型数组指定范围中的每个元素。填充的范围从索引 fromIndex（包括）一直到索引 toIndex（不包括）。
+    //（如果 fromIndex == toIndex，则填充范围为空。）
+    ```
+
+    参数：
+    a               - 要填充的数组
+    fromIndex - 要使用指定值填充的第一个元素的索引（包括）
+    toIndex     - 要使用指定值填充的最后一个元素的索引（不包括）
+    val           - 要存储在数组所有元素中的值
+
+Java数组**查找指定元素**
+
++ 第一种形式如下：
+
+    ```java
+  binarySearch(Object[] a,Object key);//a 表示要搜索的数组，key 表示要搜索的值。
+  ```
+
+    在进行数组查询之前，必须对数组进行排序（可以使用 sort() 方法）
+
++ 第二种形式如下：
+
+    ```java
+    binarySearch(Object[] a,int fromIndex,int toIndex,Object key);//a 表示要进行查找的数组，fromIndex 指定范围的开始处索引（包含开始处），toIndex 指定范围的结束处索引（不包含结束处），key 表示要搜索的元素。
+    ```
+
+    注意：实现对数组进行查找的方法很多，但是使用 Arrays 对象的 binarySearch() 方法是最简单、最方便的一种，因此该方法经常被应用。
+
+Java**复制（拷贝）数组**的4种方法：
+
++ Arrays 类的 copyOf() 方法
+
+    ```java
+    Arrays.copyOf(dataType[] srcArray,int length);//Arrays.copyOf(dataType[] srcArray,int length);
+    ```
+
+    注意：目标数组如果已经存在，将会被重构。
+
++ Arrays 类的copyOfRange() 方法
+
+    ```java
+    Arrays.copyOfRange(dataType[] srcArray,int startIndex,int endIndex);
+    //srcArray 表示原数组。
+    //startIndex 表示开始复制的起始索引，目标数组中将包含起始索引对应的元素，另外，startIndex 必须在 0 到 srcArray.length 之间。
+    //endIndex 表示终止索引，目标数组中将不包含终止索引对应的元素，endIndex 必须大于等于 startIndex，可以大于 srcArray.length，如果大于 srcArray.length，则目标数组中使用默认值填充。
+    ```
+
+    注意：目标数组如果已经存在，将会被重构。
+
++ System 类的 arraycopy() 方法
+
+    ```java
+    System.arraycopy(dataType[] srcArray,int srcIndex,dataType[] destArray,int destIndex,int length);
+    //srcArray 表示原数组；
+    //srcIndex 表示原数组中的起始索引；
+    //destArray 表示目标数组；
+    //destIndex 表示目标数组中的起始索引；
+    //length 表示要复制的数组长度。
+    ```
+
+    使用此方法复制数组时，length+srcIndex 必须小于等于 srcArray.length，同时 length+destIndex 必须小于等于 destArray.length。
+
++ Object 类的 clone() 方法
+
+    ```java
+    int[] targetArray=(int[])sourceArray.clone();
+    //注意：目标数组如果已经存在，将会被重构。
+    ```
+
+注意：以上几种方法都是**浅拷贝（浅复制）**。浅拷贝只是复制了对象的引用地址，两个对象指向同一个内存地址，所以修改其中任意的值，另一个值都会随之变化。深拷贝是将对象及值复制过来，两个对象修改其中任意的值另一个值不会改变。
+
+Java **数组排序**（升序和降序）
+
++ 要对一个数组进行升序排列，只需要调用 Arrays.sort() 方法即可。
++ 在 Java 语言中使用 sort 实现降序有两种方法。
+
+    ```java
+     Arrays.sort(a, Collections.reverseOrder());
+    ```
+
+    实现 Comparator 接口的复写 compare() 方法，
+
+### 12、Java排序
+
+#### 12.1 冒泡排序（*Bubble Sort*）
+
+冒泡排序的基本思想是：对比相邻的元素值，如果满足条件就交换元素值，把较小的元素值移动到数组前面，把大的元素值移动到数组后面（也就是交换两个元素的位置），这样数组元素就像气泡一样从底部上升到顶部。
+
+```java
+for(i = 0; i < n-1; i++){
+    for(j = 0; j < n-1-i; j++){
+        if(a[j]>a[j+1]){
+            temp = a[j];
+            a[j] = a[j+1];
+            a[i+1] = temp;
+            count++;
+        }
+    }
+}
+```
+
+#### 12.2 快速排序（*Quick sort*）
+
+快速排序的**基本思想**是：通过一趟排序，将要排序的数据分隔成独立的两部分，其中一部分的所有数据比另外一部分的所有数据都要小，然后再按此方法对这两部分数据分别进行快速排序，整个排序过程可以递归进行，以此使整个数据变成有序序列。
+**具体做法**是：假设要对某个数组进行排序，首先需要任意选取一个数据（通常选用第一个数据）作为关键数据，然后将所有比它小的数都放到它的前面，所有比它大的数都放到它的后面。这个过程称为一趟快速排序；递归调用此过程，即可实现数据的快速排序。
+
+```java
+public static int partition(int[] array, int low, int high) {
+        // 取最后一个元素作为中心元素
+        int pivot = array[high];
+        // 定义指向比中心元素大的指针，首先指向第一个元素
+        int pointer = low;
+        // 遍历数组中的所有元素，将比中心元素大的放在右边，比中心元素小的放在左边
+        for (int i = low; i < high; i++) {
+            if (array[i] <= pivot) {
+                // 将比中心元素小的元素和指针指向的元素交换位置
+                // 如果第一个元素比中心元素小，这里就是自己和自己交换位置，指针和索引都向下一位移动
+                // 如果元素比中心元素大，索引向下移动，指针指向这个较大的元素，直到找到比中心元素小的元素，并交换位置，指针向下移动
+                int temp = array[i];
+                array[i] = array[pointer];
+                array[pointer] = temp;
+                pointer++;
+            }
+            System.out.println(Arrays.toString(array));
+        }
+        // 将中心元素和指针指向的元素交换位置
+        int temp = array[pointer ];
+        array[pointer] = array[high];
+        array[high] = temp;
+        return pointer;
+    }
+
+    public static void quickSort(int[] array, int low, int high) {
+        if (low < high) {
+            // 获取划分子数组的位置
+            int position = partition(array, low, high);
+            // 左子数组递归调用
+            quickSort(array, low, position -1);
+            // 右子数组递归调用
+            quickSort(array, position + 1, high);
+        }
+    }
+```
+
+#### 12.3 选择排序法
+
+选择排序是指每一趟从待排序的数据元素中选出最大（或最小）的一个元素，顺序放在已排好序的数列的最后，直到全部待排序的数据元素排完。
+
+```java
+/**
+ * 选择排序
+ */
+public static void algorithm4(){
+    //定义一个整数类型数组，用于排序的原始数据
+    int[] array={3,5,1,2,4}; 
+    //获取数组的大小
+    int length = array.length; 
+    //第一个循环用来遍历数组中的所有数字
+    for (int i = 0; i < length; i++) { 
+        //初始化一个变量，用来记录最小数字的下标。初始默认假设第一个数字就是最小数字
+        int minIndex = i; 
+        //第二个循环，通过比较获取数组中最小的数字的下标。
+        for (int j = i+1; j < length ; j++) { 
+            //如果找到更小的数字，
+            if (array[minIndex]>=array[j]) {
+                //将minIndex变量的值修改为新的最小数字的下标。
+                minIndex = j;
+            }
+        }
+ 
+        //所有数字一个个比较结束之后，就能确认那个数字最小了。
+        //将最小的数字替换到第一个位置，将第一个位置的数字放到最小数字原来的位置，就是一次交换。
+        int temp=array[i];
+        array[i]=array[minIndex];
+        array[minIndex]=temp;
+    }
+ 
+ 
+    //将排序之后的数组打印出来。
+    //下面的输出是不计算时间复杂度的，因为实际开发中这段输出代码会被删掉
+    for (int i = 0; i < length; i++) {
+        System.out.print(array[i]+"，");
+    }
+ 
+}
+```
+
+选择排序总共循环了所少次？
+n+(n-1)+(n-2)+(n-3)+…+1
+上述这个表达式，反过来写就是1+2+3+4+5+…+n。高斯算法就是（n+1）n/2
+
+#### 12.4 直接插入排序法
+
+直接插入排序的基本思想是：将 n 个有序数存放在数组 a 中，要插入的数为 x，首先确定 x 插在数组中的位置 p，然后将 p 之后的元素都向后移一个位置，空出 a(p)，将 x 放入 a(p)，这样可实现插入 x 后仍然有序。
+
+```java
+ int[] number = { 13, 15, 24, 99, 4, 1 };
+ int temp, j;
+    for (int i = 1; i < number.length; i++) {
+        temp = number[i];
+        for (j = i - 1; j >= 0 && number[j] > temp; j--) {
+            number[j + 1] = number[j];
+        }
+        number[j + 1] = temp;
+    }
+```
+
