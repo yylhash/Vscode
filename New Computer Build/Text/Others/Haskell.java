@@ -1,3 +1,4 @@
+package Others;
 public class Haskell{
     public static void main(String[] args) {
         System.out.println("乘法口诀表：");

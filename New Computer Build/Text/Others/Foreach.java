@@ -1,3 +1,4 @@
+package Others;
 public class Foreach {
     public static void main(String[] args) {
         String[] urls = { "http://c.biancheng.net/java", "http://c.biancheng.net/c", "http://c.biancheng.net/golang/" };

@@ -1,3 +1,4 @@
+package Others;
 public class replaceString {
     public static void main(String[] args) {
         // 定义原始字符串

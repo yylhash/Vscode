@@ -1,3 +1,4 @@
+package StringBuffer;
 class SplitOne{
   public static void main(String[] args) {
    String s = "hodfop = dfsf:fasdf:dfasfas:dfsadf";

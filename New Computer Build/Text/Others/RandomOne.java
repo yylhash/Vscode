@@ -1,3 +1,4 @@
+package Others;
 import java.util.Random;
 
 public class RandomOne {

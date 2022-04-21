@@ -1,3 +1,4 @@
+package Others;
 public class twoArray{
     public static void main(String[] args) {
         int[][] intArray = new int[10][10];

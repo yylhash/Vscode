@@ -1,3 +1,4 @@
+package StringBuffer;
 public class splitThree {
     public static void main(String[] args) {
         // 定义存储新闻标题的数组

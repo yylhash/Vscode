@@ -1,3 +1,4 @@
+package StringBuffer;
 public class splitTwo {
     public static void main(String[] args) {
         String Colors = "Red,Black,White,Yellow,Blue";

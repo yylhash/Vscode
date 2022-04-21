@@ -562,4 +562,16 @@ n+(n-1)+(n-2)+(n-3)+…+1
     }
 ```
 
-hhh
+### 13、Java的输入输出流（*I/O*）
+
+#### 13.1 读取控制台的输入
+
+Java 的控制台输入由 System.in 完成。你可以把 System.in 包装在一个 BufferedReader 对象中来创建一个字符流。
+
+```java
+BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+```
+
++ 调用read()方法从控制台读取多字符输入
++ 调用readLine()方法从控制台读取字符串
++ 
