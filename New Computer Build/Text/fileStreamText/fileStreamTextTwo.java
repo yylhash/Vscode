@@ -10,16 +10,16 @@ import java.io.OutputStreamWriter;
 public class fileStreamTextTwo {
     public static void main(String[] args) throws IOException {
         File f = new File("a.txt");
-        FileOutputStream os = new FileOutputStream(f);
+        // FileOutputStream os = new FileOutputStream(f);
         //创建一个输出流对象 os 文件不存在 将会自动创建
 
-        OutputStreamWriter writer = new OutputStreamWriter(os, "UTF-8");
+        // OutputStreamWriter writer = new OutputStreamWriter(os, "UTF-8");
         
-        writer.append("中文输入");
-        writer.append("\r\n");
-        writer.append("English");
-        writer.close();
-        os.close();
+        // writer.append("中文输入");
+        // writer.append("\r\n");
+        // writer.append("English");
+        // writer.close();
+        // os.close();
 
         FileInputStream is = new FileInputStream(f);
         //创建输入流对象 is 
