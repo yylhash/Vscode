@@ -605,5 +605,7 @@ BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 > File f = new File("C:/java/hello");
 > OutputStream fOut = new FileOutputStream(f);
 > ```
+哈哈哈哈哈哈
+站好
 
 
