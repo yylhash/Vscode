@@ -1,45 +1,38 @@
 package Others;
 
+import java.util.Stack;
+
 public class Test {
 
-    public String longestCommonPrefix(String[] strs) {
-        String str = "",strC = "";
-        int len = strs.length;
-        int min = strs[0].length();
-        String[][] strCopy = new String[len][];
+    public boolean isValid(String str) {
+        Stack<Character> left = new Stack<>();
 
-        if(len == 1) {
-            return strC = strs[0];
-        }
-        for (int i = 0; i < len; i++) {
-            strCopy[i] = strs[i].split("");
-        }
-        for(int i = 0; i< len; i++){
-            if(strs[i].length() <= min) {
-                min = strs[i].length();
-            } 
-        }
-        for (int j = 0; j < min; j++) {// 进行列循环
-            for (int i = 0; i < len - 1; i++) { // 进行行循环
-                if (strCopy[i][j].equals(strCopy[i + 1][j])) {
-                    str = strCopy[i][j];
-                }else {
-                    str = "";
-                    break;
+        for(char c :str.toCharArray()){
+            if (c == '(' || c == '{' || c == '['){ //如果是左括号就入栈
+                left.push(c);
+            } else { // 如果是右括号
+                //首先判断栈是否为空
+                if(left.empty()){
+                    return false;
+                } else if (left.peek() == leftOf(c)){
+                    left.pop();
+                } else {
+                    return false;
                 }
             }
-            if(str.equals("")){
-                break;
-            }
-            strC +=str;
         }
+        return left.empty();
+    }
 
-        return strC;
+    char leftOf(char c) {
+        if (c == '}') return '{';
+        if (c == ')') return '(';
+        return '[';
     }
 
     public static void main(String[] args) {
-        String[] strs = { "ab", "a"};
+        String strs ="()";
         Test test = new Test();
-        System.out.println(test.longestCommonPrefix(strs));
+        System.out.println(test.isValid(strs));
     }
 }
