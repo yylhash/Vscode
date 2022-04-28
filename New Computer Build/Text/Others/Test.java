@@ -4,35 +4,34 @@ import java.util.Stack;
 
 public class Test {
 
-    public boolean isValid(String str) {
-        Stack<Character> left = new Stack<>();
-
-        for(char c :str.toCharArray()){
-            if (c == '(' || c == '{' || c == '['){ //如果是左括号就入栈
-                left.push(c);
-            } else { // 如果是右括号
-                //首先判断栈是否为空
-                if(left.empty()){
-                    return false;
-                } else if (left.peek() == leftOf(c)){
-                    left.pop();
+    public int[] removeDuplicates(int[] nums) {
+        int len = nums.length;
+        int count = 1;
+        for( int i = 0; i < len; i++) {
+            for(int j = i + 1 ;j < len - 1; j++) {
+                if(nums[i] != nums[j]) {
+                    // count++;
+                    break;
                 } else {
-                    return false;
+                    nums[j] = nums[j+1];
                 }
             }
         }
-        return left.empty();
-    }
+        // for(int i = 0; i < nums.length-1; i++) {
+        //     if(nums[i] != nums[i+1]) {
+        //         count++;
+        //     }
+        // }
+        // System.out.println(count);
 
-    char leftOf(char c) {
-        if (c == '}') return '{';
-        if (c == ')') return '(';
-        return '[';
+        return nums;
     }
-
     public static void main(String[] args) {
-        String strs ="()";
+        int  []nums = {0,0,1,1,1,2,2,3,3,4,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5};
         Test test = new Test();
-        System.out.println(test.isValid(strs));
+        int count = 1;
+        for(int i = 0; i < nums.length; i++) {
+            System.out.print(test.removeDuplicates(nums)[i]);
+        }
     }
 }
