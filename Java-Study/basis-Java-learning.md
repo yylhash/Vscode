@@ -605,4 +605,101 @@ BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 > File f = new File("C:/java/hello");
 > OutputStream fOut = new FileOutputStream(f);
 > ```
+### 14、Java Scanner 类
 
+下面是创建 Scanner 对象的基本语法：
+
+```java
+Scanner s = new Scanner(System.in);
+```
+
+并通过 Scanner 类的 next() 与 nextLine() 方法获取输入的字符串。
+
+#### 14.1 next() 与 nextLine() 区别
+
+next():
+
++ 1、一定要读取到有效字符后才可以结束输入。
++ 2、对输入有效字符之前遇到的空白，next() 方法会自动将其去掉。
++ 3、只有输入有效字符后才将其后面输入的空白作为分隔符或者结束符。
++ next() 不能得到带有空格的字符串。
+
+nextLine():
+
++ 1、以Enter为结束符,也就是说 nextLine()方法返回的是输入回车之前的所有字符。
++ 2、可以获得空白。
+
+### 15、Java 异常处理
+
+Java中的异常又称为例外，是一个在程序执行期间发生的事件，它中断正在执行程序的正常指令流。为了能够及时有效地处理程序中的运行错误，必须使用异常类，这可以让程序具有极好的容错性且更加健壮。 
+
+在 Java 中一个异常的产生，主要有如下三种原因：
+
++ Java 内部错误发生异常，Java 虚拟机产生的异常。
++ 编写的程序代码中的错误所产生的异常，例如空指针异常、数组越界异常等。
++ 通过 throw 语句手动生成的异常，一般用来告知该方法的调用者一些必要信息。
+
+#### 15.1 常见的Error和Exception
+
+运行时异常（RuntimeException）：
+
+- NullPropagation：空指针异常；
+- ClassCastException：类型强制转换异常
+- IllegalArgumentException：传递非法参数异常
+- IndexOutOfBoundsException：下标越界异常
+- NumberFormatException：数字格式异常
+
+非运行时异常：
+
+- ClassNotFoundException：找不到指定 class 的异常
+- IOException：IO 操作异常
+
+错误（Error）：
+
+- NoClassDefFoundError：找不到 class 定义异常
+- StackOverflowError：深递归导致栈被耗尽而抛出的异常
+- OutOfMemoryError：内存溢出异常
+
+#### 15.2 Java的异常处理机制
+
+Java 的异常处理机制提供了一种结构性和控制性的方式来处理程序执行期间发生的事件。异常处理的机制如下：
+
+- 在方法中用 try catch 语句捕获并处理异常，catch 语句可以有多个，用来匹配多个异常。
+- 对于处理不了的异常或者要转型的异常，在方法的声明处通过 throws 语句拋出异常，即由上层的调用方法来处理。
+
+```java
+try {
+    逻辑程序块
+} catch(ExceptionType1 e) {
+    处理代码块1
+} catch (ExceptionType2 e) {
+    处理代码块2
+    throw(e);    // 再抛出这个"异常"
+} finally {
+    释放资源代码块
+}
+```
+
+#### 15.3 finally关键字
+
+在实际开发中，根据 try catch 语句的执行过程，try 语句块和 catch 语句块有可能不被完全执行，而有些处理代码则要求必须执行。
+
+finally 关键字用来创建在 try 代码块后面执行的代码块。无论是否发生异常，finally 代码块中的代码总会被执行。在 finally 代码块中，可以运行清理类型等收尾善后性质的语句。
+
+### 16、Java继承
+
+继承是面向对象的三大特征之一。
+
+Java中的继承就是在已经存在类的基础上进行扩展，从而产生新的类。已经存在的类称为父类、基类或超类，而新产生的类称为子类或派生类。在子类中，不仅包含父类的属性和方法，还可以增加新的属性和方法。
+
+```java
+修饰符 class class_name {
+    //父类
+}
+修饰符 class class_name extends extend_class {
+    // 类的主体
+    //子类
+}
+```
+
+类的继承不改变类成员的**访问权限**，也就是说，如果父类的成员是公有的、被保护的或默认的，它的子类仍具有相应的这些特性，并且子类不能获得父类的**构造方法**。
